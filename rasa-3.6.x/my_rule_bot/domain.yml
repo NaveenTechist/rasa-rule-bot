@@ -1,0 +1,53 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - check_balance
+  - ask_faq
+  - inform_account
+  - atm_issues
+
+responses:
+  utter_greet:
+    - text: "Hello! I am your secure banking assistant. How can I help you today?"
+      buttons:
+        - title: "Check Balance"
+          payload: "/check_balance"
+        - title: "FAQs"
+          payload: "/ask_faq"
+        - title: "ATM Issues"
+          payload: "/atm_issues"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a secure day."
+
+  utter_ask_account:
+    - text: "Please enter your account number."
+
+  utter_please_rephrase:
+    - text: "I'm sorry, I didn't understand that. Please click one of the buttons below."
+      buttons:
+        - title: "Check Balance"
+          payload: "/check_balance"
+        - title: "FAQs"
+          payload: "/ask_faq"
+        - title: "ATM Issues"
+          payload: "/atm_issues"
+
+  utter_atm_issues:
+    - text: "I can help with ATM issues. Give me transaction serial number..."
+
+actions:
+  - action_fetch_balance
+  - action_atm_issue
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+slots:
+  bgl_no:
+    type: text
+    mappings:
+      - type: from_text

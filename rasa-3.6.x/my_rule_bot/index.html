@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Banking Assistant | Rasa Rule-Based</title>
+  <!-- Modern Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      --bg-color: #0f172a;
+      --text-color: #f8fafc;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    /* Hover effect for buttons within the chat widget */
+    .rw-button {
+      transition: transform 0.2s ease !important;
+    }
+
+    .rw-button:hover {
+      transform: scale(1.05) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hero">
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      System Live
+    </div>
+    <h1>Secure Rule Engine</h1>
+    <p>A deterministic, rule-based banking assistant powered by Rasa 3.x and Python custom actions. No AI
+      hallucinations—just pure, secure logic.</p>
+    <p style="font-size: 0.9rem; color: #64748b;">Click the widget in the corner to begin your session.</p>
+  </div>
+
+  <!-- Official Botfront Webchat Script -->
+  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      if (window.Widget) {
+        Widget.init({
+          selector: "body",
+          initPayload: "/greet",
+          customData: { "language": "en" },
+          socketUrl: "http://localhost:5005",
+          socketPath: "/socket.io/",
+          title: "Secure Banking Bot",
+          subtitle: "Rule-Based Assistant",
+          mainColor: "#1a2a6c",
+          userBackgroundColor: "#f1f5f9",
+          userTextColor: "#1e293b",
+          params: { "storage": "session" }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

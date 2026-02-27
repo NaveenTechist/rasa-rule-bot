@@ -1,0 +1,47 @@
+version: "3.1"
+
+#--------GREEET--------------
+
+rules:
+- rule: Greet user
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Goodbye user
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+#------FAQ-------------------
+
+- rule: Handle FAQ button
+  steps:
+  - intent: ask_faq
+  - action: utter_please_rephrase
+
+  #--------- ATM ISSUE ----------
+
+- rule: Ask for ATM serial
+  steps:
+  - intent: atm_issues
+  - action: utter_atm_issues
+
+- rule: Fetch ATM issue after serial provided
+  steps:
+  - action: utter_atm_issues
+  - intent: inform_account
+  - action: action_atm_issue
+
+  #-------CHECK BALANCE---------
+
+- rule: Ask for BGL number
+  steps:
+  - intent: check_balance
+  - action: utter_ask_account
+
+- rule: Fetch balance after user provides BGL
+  steps:
+  - action: utter_ask_account
+  - intent: inform_account
+  - action: action_fetch_balance

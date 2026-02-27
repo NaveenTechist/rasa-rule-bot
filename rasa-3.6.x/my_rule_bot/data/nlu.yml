@@ -1,0 +1,30 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - good morning
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
+
+- intent: check_balance
+  examples: |
+    - /check_balance
+
+- intent: ask_faq
+  examples: |
+    - /ask_faq
+
+- intent: inform_account
+  examples: |
+    - 12345
+    - 987654
+    - BGL1234
+    - 556677

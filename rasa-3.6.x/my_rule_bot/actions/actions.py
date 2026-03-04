@@ -43,7 +43,7 @@ class ActionFetchBalance(Action):
 
         logger.info("Executing ActionFetchBalance...")
 
-        # Get user input
+        # Get user inputs
         user_input = tracker.latest_message.get("text")
 
         # If user just clicked button intent
@@ -113,7 +113,7 @@ class ActionAtmIssue(Action):
 
         logger.info("Executing ActionAtmIssue...")
 
-        # Get the serial number from the user's message
+        # Get the serial number from the user's messages
         serial_number = tracker.latest_message.get('text')
 
         # If the user just clicked the button, it sends '/atm_issues'
@@ -123,7 +123,7 @@ class ActionAtmIssue(Action):
             return []
 
         try:
-            # 1. Try to connect to the database
+            # 1. Try to connect to the db
             conn = get_db_connection()
             
             if conn:

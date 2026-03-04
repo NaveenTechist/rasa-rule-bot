@@ -72,6 +72,5 @@ The application is built using a modular microservices architecture:
 -   **Optional LLM Fallback:** Using an LLM to handle "out of scope" questions while maintaining strict rules for transactions.
 -   **Enterprise Automation:** Integrating with ERP systems.
 -   **Scalable Microservice Deployment:** Deploying on Kubernetes for high availability.
-
 ## 10. Conclusion
 A Rule-Based chatbot is the gold standard for **secure, controlled applications**. It provides the reliability required by banking and enterprise support sectors where errors are costly and data privacy is paramount. By using Rasa in a purely deterministic way, developers can build robust, audit-ready automation workflows.

@@ -89,11 +89,12 @@ class ActionFetchBalance(Action):
 
             else:
                 response = (
-                    "We are currently unable to connect to the database. "
+                    "We are currently unable to connect to the database."
                     "Please try again later."
                 )
 
             dispatcher.utter_message(text=response)
+            dispatcher.utter_message(response="utter_main_menu")
 
         except Exception as e:
             logger.error(f"Error in ActionFetchBalance: {e}")
@@ -158,6 +159,7 @@ class ActionAtmIssue(Action):
                 logger.warning("DB Connection failed for ATM issue, falling back to simulated.")
 
             dispatcher.utter_message(text=response)
+            dispatcher.utter_message(response="utter_main_menu")
             
         except Exception as e:
             logger.error(f"Error in ActionAtmIssue.run: {e}")

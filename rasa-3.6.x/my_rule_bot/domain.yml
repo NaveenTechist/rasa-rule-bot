@@ -26,7 +26,7 @@ responses:
     - text: "Please enter your account number."
 
   utter_please_rephrase:
-    - text: "I'm sorry, I didn't understand that. Please click one of the buttons below."
+    - text: "These are the options available. Please click one of the buttons below."
       buttons:
         - title: "Check Balance"
           payload: "/check_balance"
@@ -51,3 +51,15 @@ slots:
     type: text
     mappings:
       - type: from_text
+
+#-------MAIN MENU----------
+
+utter_main_menu:
+  - text: "Is there anything else I can help you with?"
+    buttons:
+      - title: "Check Balance"
+        payload: "/check_balance"
+      - title: "ATM Issues"
+        payload: "/atm_issues"
+      - title: "FAQs"
+        payload: "/ask_faq"

@@ -7,20 +7,67 @@ nlu:
     - hello
     - hi
     - good morning
+    - how are you
+    - how are you doing
+    - how is everything
+    - how is everything going
+    - how is everything going on
+    - how is everything going on here
+    - how are you doing today
+    - h
 
 - intent: goodbye
   examples: |
     - bye
     - goodbye
-    - see you
+    - see you later
+    - see you soon
+    - see you tomorrow
+    - see you next week
+    - see you next month
+    - see you next year
+    - see you next decade
+    - see you next century
+    - see you next millennium
+    - see you later alligator
+    - after you
+    - after you too
+    - after you too much
 
 - intent: check_balance
   examples: |
     - /check_balance
+    - how much money do I have
+    - how much money do I have in my account
+    - balance
+    - present balance
+    - current balance
+    - my balance
+    - my account balance
 
 - intent: ask_faq
   examples: |
     - /ask_faq
+    - what is the FAQ?
+    - what is the FAQ for the bank  
+    - FAQ
+    - Questions
+    - Asked Questions
+    - Frequently Asked Questions
+
+#-------ATM ISSUES----------
+
+- intent: atm_issues
+  examples: |
+    - /atm_issues
+    - what is the ATM issue?
+    - what is the ATM issue for the bank
+    - ATM issue
+    - ATM Issues
+    - ATM Issues for the bank
+    - ATM Issues for the bank
+
+#-------INFORM ACCOUNT----------
 
 - intent: inform_account
   examples: |
@@ -28,3 +75,12 @@ nlu:
     - 987654
     - BGL1234
     - 556677
+    - BGL1234567890
+    - BGL123456789012
+    - BGL12345678901234
+    - BGL1234567890123456
+    - BGL123456789012345678
+    - BGL12345678901234567890
+    - BGL1234567890123456789012
+    - BGL123456789012345678901234
+    - BGL12345678901234567890123456

@@ -1,4 +1,5 @@
 import React, { forwardRef, useRef } from 'react';
+import img from './image.png';
 
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
@@ -8,6 +9,18 @@ import { initStore } from '../src/store/store';
 import socket from './socket';
 import ThemeContext from '../src/components/Widget/ThemeContext';
 // eslint-disable-next-line import/no-mutable-exports
+
+const image = document.createElement("img");
+image.src = img;
+image.style.width = "100%";
+image.style.border = "none";
+image.style.margin = "0";
+image.style.padding = "0";
+
+document.body.style.margin = "0";
+document.body.style.padding = "0";
+
+document.body.prepend(image);
 
 const ConnectedWidget = forwardRef((props, ref) => {
   class Socket {

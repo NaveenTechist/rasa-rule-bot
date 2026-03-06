@@ -19,6 +19,17 @@ responses:
         - title: "ATM Issues"
           payload: "/atm_issues"
 
+  utter_main_menu:
+  - text: "Is there anything else I can help you with?"
+    buttons:
+      - title: "Check Balance"
+        payload: "/check_balance"
+      - title: "ATM Issues"
+        payload: "/atm_issues"
+      - title: "FAQs"
+        payload: "/ask_faq"
+
+
   utter_goodbye:
     - text: "Goodbye! Have a secure day."
 
@@ -52,14 +63,3 @@ slots:
     mappings:
       - type: from_text
 
-#-------MAIN MENU----------
-
-utter_main_menu:
-  - text: "Is there anything else I can help you with?"
-    buttons:
-      - title: "Check Balance"
-        payload: "/check_balance"
-      - title: "ATM Issues"
-        payload: "/atm_issues"
-      - title: "FAQs"
-        payload: "/ask_faq"

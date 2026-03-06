@@ -8,6 +8,8 @@ rules:
   - intent: greet
   - action: utter_greet
 
+  #-------Goodbye--------------
+  
 - rule: Goodbye user
   steps:
   - intent: goodbye
@@ -30,7 +32,7 @@ rules:
 - rule: Fetch ATM issue after serial provided
   steps:
   - action: utter_atm_issues
-  - intent: inform_account
+  - intent: inform_account 
   - action: action_atm_issue
 
   #-------CHECK BALANCE---------

@@ -5,6 +5,14 @@ This project starts with deterministic **rule-based logic** and evolves toward a
 
 ---
 
+
+## 🚀 RASA chatbot Demo
+
+![Chat Bot image-1](chat-demo/rasa-chat1.png)
+
+
+![Chat Bot image-2](chat-demo/rasa-chat2.png)
+
 ## 🎯 Why Rule-Based First?
 
 In banking, precision matters.

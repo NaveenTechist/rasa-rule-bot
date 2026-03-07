@@ -166,3 +166,123 @@ class ActionAtmIssue(Action):
             dispatcher.utter_message(text="I'm sorry, I couldn't process your ATM request right now.")
         
         return []
+
+
+class ActionATMFail(Action):
+
+    def name(self):
+        """
+        Name of the custom action used in domain.yml
+        """
+        return "action_atm_fail"
+
+    def run(self, dispatcher, tracker, domain):
+
+        try:
+            # -----------------------------
+            # Get database connection
+            # -----------------------------
+            conn = get_db_connection()
+            cursor = conn.cursor()
+
+            logger.info("Connected to database successfully")
+
+            # ---------------------------------------------
+            # SQL Query
+            # Fetch only failed ATM transactions
+            # Condition:
+            # actual_transaction_amount = 0.00
+            # ---------------------------------------------
+            query = """
+                SELECT 
+                    transaction_serial_number,
+                    transaction_date,
+                    card_acceptor_term_location,
+                    transaction_amount,
+                    actual_transaction_amount
+                FROM atm_iss
+                WHERE actual_transaction_amount = 0.00
+                ORDER BY transaction_date DESC
+                LIMIT 5
+            """
+
+            cursor.execute(query)
+
+            results = cursor.fetchall()
+
+            logger.info(f"Number of failed transactions found: {len(results)}")
+
+            # ---------------------------------------------
+            # If no failed transactions found
+            # ---------------------------------------------
+            if not results:
+                dispatcher.utter_message(
+                    text="No failed ATM transactions were found."
+                )
+            else:
+
+                dispatcher.utter_message(
+                    text="Here are the top 5 failed ATM transactions:"
+                )
+
+                # Loop through records and display them
+                for row in results:
+
+                    serial_number = row[0]
+                    date = row[1]
+                    location = row[2]
+                    transaction_amount = row[3]
+
+                    message = (
+                        f"Transaction Serial Number: {serial_number}\n"
+                        f"Transaction Date: {date}\n"
+                        f"ATM Location: {location}\n"
+                        f"Transaction Amount: {transaction_amount}\n"
+                        f"Status: FAILED"
+                    )
+
+                    dispatcher.utter_message(text=message)
+
+            # Close DB resources
+            cursor.close()
+            conn.close()
+
+            logger.info("Database connection closed")
+
+        except Exception as e:
+
+            # Log the error for debugging
+            logger.error(f"Error fetching ATM failed transactions: {str(e)}")
+
+            dispatcher.utter_message(
+                text="Sorry, I couldn't retrieve ATM failed transaction details at the moment."
+            )
+
+        # Return to main menu
+        dispatcher.utter_message(response="utter_main_menu")
+
+        return []
+
+class ActionATMSuccess(Action):
+
+    def name(self):
+        return "action_atm_success"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="Fetching successful ATM transaction details...")
+        dispatcher.utter_message(response="utter_main_menu")
+        return []
+
+
+class ActionBGLFetch(Action):
+
+    def name(self):
+        return "action_bgl_fetch"
+
+    def run(self, dispatcher, tracker, domain):
+
+        rrn = tracker.latest_message.get("text")
+
+        dispatcher.utter_message(text=f"Fetching BGL details for RRN: {rrn}")
+        dispatcher.utter_message(response="utter_main_menu")    
+        return []

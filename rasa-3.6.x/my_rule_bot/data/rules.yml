@@ -47,3 +47,25 @@ rules:
   - action: utter_ask_account
   - intent: inform_account
   - action: action_fetch_balance
+
+  #FAQ
+
+- rule: ATM fail flow
+  steps:
+    - intent: faq_atm_transaction_fail
+    - action: action_atm_fail
+
+- rule: ATM success flow
+  steps:
+    - intent: faq_atm_transaction_success
+    - action: action_atm_success
+
+- rule: BGL ask rrn
+  steps:
+    - intent: faq_bgl_details
+    - action: utter_ask_rrn
+
+- rule: BGL fetch after rrn
+  steps:
+    - intent: provide_rrn
+    - action: action_bgl_fetch
